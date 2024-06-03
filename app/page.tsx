@@ -1,5 +1,10 @@
-export default function Home() {
+import { getAuthSession } from "@/lib/auth";
+
+export default async function Home() {
+  const session = await getAuthSession()
   return (
-    <div className="">Hello</div>
+    <div className="">
+      <p>{JSON.stringify(session, null, 2)}</p>
+    </div>
   );
 }
