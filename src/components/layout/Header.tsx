@@ -7,8 +7,8 @@ import { AuthButton } from "../features/auth/AuthButton";
 
 export function Header() {
   return (
-    <header className="bg-background sticky top-0 z-40 w-full border-b">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+    <header className="border-b border-b-accent top-0 bg-background w-full">
+      <div className="container flex items-center py-2 max-w-lg m-auto gap-1">
         <div className="flex gap-2 items-center">
           <Typography variant="h3" as={Link} href="/">
             {SiteConfig.title}
