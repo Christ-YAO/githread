@@ -31,7 +31,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Providers>
             <div className="relative flex min-h-screen flex-col">
               <Header />
-              <div className="flex-1">{children}</div>
+              <div className="flex-1 max-w-lg m-auto pt-16">{children}</div>
               <Footer />
             </div>
             <TailwindIndicator />

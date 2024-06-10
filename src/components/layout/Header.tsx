@@ -7,7 +7,7 @@ import { AuthButton } from "../features/auth/AuthButton";
 
 export function Header() {
   return (
-    <header className="border-b border-b-accent top-0 bg-background w-full">
+    <header className="border-b border-b-accent fixed z-20 top-0 bg-background w-full">
       <div className="container flex items-center py-2 max-w-lg m-auto gap-1">
         <div className="flex gap-2 items-center">
           <Typography variant="h3" as={Link} href="/">
