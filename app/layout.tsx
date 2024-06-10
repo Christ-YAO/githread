@@ -24,7 +24,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <head />
         <body
           className={cn(
-            'h-full bg-background font-sans antialiased',
+            'h-full bg-background font-sans antialiased text-primary',
             fontSans.variable
           )}
         >
