@@ -1,4 +1,4 @@
-import { getUser } from "@/components/features/query/user.query";
+import { getUser } from "@/query/user.query";
 import WritePostForm from "./WritePostForm";
 
 export default async function WritePage() {

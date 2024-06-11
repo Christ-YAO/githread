@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { PostHome } from "../query/post.query";
+import { PostHome } from "../../../query/post.query";
 import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";

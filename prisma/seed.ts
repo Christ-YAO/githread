@@ -48,7 +48,7 @@ const main = async () => {
 
         const randomPostIndex = faker.number.int({
             min: 0,
-            max: users.length - 1
+            max: posts.length - 1
         })
 
         const like = {

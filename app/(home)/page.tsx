@@ -1,5 +1,5 @@
 import Post from "@/components/features/post/Post";
-import { getLatestPosts } from "@/components/features/query/post.query";
+import { getLatestPosts } from "@/query/post.query";
 import { getAuthSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 

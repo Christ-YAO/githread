@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PostHome } from "../query/post.query";
+import { PostHome } from "../../../query/post.query";
 import PostLayout from "./PostLayout";
 import { Button } from "@/components/ui/button";
 import { Heart, MessageCircle } from "lucide-react";
