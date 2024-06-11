@@ -32,7 +32,7 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
   });
   // const router = useRouter();
   return (
-    <PostLayout user={user} className="flex flex-col gap-2">
+    <PostLayout user={user}>
       <Form
         form={form}
         onSubmit={async (values) => {
@@ -45,7 +45,7 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
           render={({ field }) => (
             <FormItem>
               <ContentTextArea {...field} />
-              <FormMessage></FormMessage>
+              <FormMessage />
             </FormItem>
           )}
         />
