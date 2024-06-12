@@ -10,10 +10,15 @@ export default async function Home() {
   return (
     <div className="divide-y divide-muted ">
       {!session?.user.id ? (
-        <div className="w-full h-[80svh] grid">
-          <div className="flex items-center justify-center text-sm">
-            <h5 className="text-xl font-semibold">Not Logged In</h5>{" "}
-            <div className="h-10 w-[0.5px] bg-accent mx-4"></div>You must be logged in before you can view posts !
+        <div className="grid place-content-center h-[80vh] gap-4 px-4">
+          <div className="w-full grid">
+            <div className="flex items-center justify-center text-sm sm:text-nowrap">
+              <h5 className="text-lg font-semibold capitalize">
+                Not Logged In
+              </h5>{" "}
+              <div className="h-10 w-[0.5px] bg-accent mx-4"></div>You must be
+              logged in before you can view posts !
+            </div>
           </div>
           <AuthButton />
         </div>

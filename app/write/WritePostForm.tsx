@@ -12,7 +12,7 @@ import {
   useZodForm,
 } from "@/components/ui/form";
 import { User } from "@prisma/client";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 
 const Schema = z.object({
@@ -23,20 +23,21 @@ export type WritePostFormValues = z.infer<typeof Schema>;
 
 type WritePostFormProps = {
   user: User;
-  onSubmit: (value: WritePostFormValues) => void;
+  onSubmit: (value: WritePostFormValues) => Promise<string>;
 };
 
 export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
   const form = useZodForm({
     schema: Schema,
   });
-  // const router = useRouter();
+  const router = useRouter();
   return (
     <PostLayout user={user}>
       <Form
         form={form}
         onSubmit={async (values) => {
-          // On Submit
+          const result = await onSubmit(values);
+          // router.push("/");
         }}
       >
         <FormField
@@ -51,7 +52,7 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
         />
 
         <div className="flex w-full justify-end">
-            <Button size={"sm"}>Post</Button>
+          <Button size={"sm"}>Post</Button>
         </div>
       </Form>
     </PostLayout>
