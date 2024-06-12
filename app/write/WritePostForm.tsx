@@ -37,7 +37,9 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
         form={form}
         onSubmit={async (values) => {
           const result = await onSubmit(values);
-          // router.push("/");
+          console.log("Submit client side", result);
+
+          router.push(`/posts/${result}`);
         }}
       >
         <FormField
