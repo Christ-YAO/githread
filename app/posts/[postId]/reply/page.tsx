@@ -26,6 +26,7 @@ export default async function PostReply({
           "use server";
           return createReply(post.id, values);
         }}
+        label="Reply"
       />
     </div>
   );

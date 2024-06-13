@@ -24,9 +24,10 @@ export type WritePostFormValues = z.infer<typeof Schema>;
 type WritePostFormProps = {
   user: User;
   onSubmit: (value: WritePostFormValues) => Promise<string>;
+  label: string;
 };
 
-export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
+export default function WritePostForm({ user, onSubmit, label }: WritePostFormProps) {
   const form = useZodForm({
     schema: Schema,
   });
@@ -55,7 +56,7 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
         />
 
         <div className="flex w-full justify-end">
-          <Button size={"sm"}>Post</Button>
+          <Button size={"sm"}>{label}</Button>
         </div>
       </Form>
     </PostLayout>
