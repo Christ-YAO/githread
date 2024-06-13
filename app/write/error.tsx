@@ -35,7 +35,7 @@ export default function Error({
     //     Try again
     //   </Button>
     // </div>
-    <Alert className="my-8 mx-4 space-x-4">
+    <Alert className="my-8 space-x-4">
       <AlertTriangle />
       <AlertTitle>Not logged</AlertTitle>
       <AlertDescription>You must be logged in to access this page.</AlertDescription>

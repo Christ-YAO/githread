@@ -8,15 +8,17 @@ import { User } from "@prisma/client";
 export default function WriteModal({
   user,
   createPost,
+  path
 }: {
   user: User;
   createPost: (values: WritePostFormValues) => Promise<string>;
+  path: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
 
   return (
-    <Dialog open={pathname === "/write"} onOpenChange={() => router.back()}>
+    <Dialog open={pathname?.includes(path)} onOpenChange={() => router.back()}>
       <DialogContent>
         <WritePostForm user={user} onSubmit={createPost} />
       </DialogContent>

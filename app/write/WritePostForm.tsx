@@ -40,6 +40,7 @@ export default function WritePostForm({ user, onSubmit }: WritePostFormProps) {
           console.log("Submit client side", result);
 
           router.push(`/posts/${result}`);
+          router.refresh();
         }}
       >
         <FormField
