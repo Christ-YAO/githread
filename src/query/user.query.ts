@@ -32,7 +32,7 @@ export const getUser = async () => {
 export const getUserProfile = async (userId: string) => {
   return prisma.user.findUnique({
     where: {
-      id: "1",
+      id: userId,
     },
     select: {
       ...userQuery,
