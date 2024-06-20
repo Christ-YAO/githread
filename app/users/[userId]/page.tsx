@@ -22,7 +22,7 @@ export default async function UserPage({
   const isFollowing = session?.user.id
     ? await prisma.follow.findFirst({
         where: {
-          followerId: user.id,
+          followerId: session.user.id,
           followingId: user.id,
         },
         select: {
@@ -49,7 +49,7 @@ export default async function UserPage({
                 return;
               }
 
-              followUser(params.userId);
+              await followUser(params.userId);
             }}
           >
             {isFollowing ? "Unfollow" : "Follow"}
