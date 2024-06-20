@@ -119,7 +119,7 @@ export const ProfileForm = ({ onSubmit, user }: ProfileFormProps) => {
       />
 
       <div className="flex w-full justify-end">
-        <Button size="sm">Post</Button>
+        <Button size="sm">Update</Button>
       </div>
     </Form>
   );

@@ -22,14 +22,14 @@ export default async function ProfilPage() {
   return (
     <div>
       <Profile user={user}>
-        <form className="mt-4">
+        <div className="mt-4">
           <Link
             href={"profile/edit"}
             className={buttonVariants({ variant: "outline" })}
           >
             Edit Profile
           </Link>
-        </form>
+        </div>
       </Profile>
       <div className="divide-y divide-accent border-t border-accent mt-4">
         {user.posts.map((post) => (
