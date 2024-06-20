@@ -16,9 +16,9 @@ export default function Post({ post }: PostProps) {
         {post.content}
       </Link>
       <div className="flex items-center gap-2">
-        <Button size={"icon"} variant={"ghost"}>
+        <div>
           <LikeButton postId={post.id} isLiked={post.likes.length > 0} />
-        </Button>
+        </div>
         <Link
           href={`/posts/${post.id}/reply`}
           className={buttonVariants({ variant: "ghost", size: "icon" })}

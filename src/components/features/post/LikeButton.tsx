@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Heart } from "lucide-react";
 import { useTransition } from "react";
 import { likeAction } from "./like.action";
+import { Button } from "@/components/ui/button";
 
 export default function LikeButton({
   postId,
@@ -16,7 +17,7 @@ export default function LikeButton({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <button
+    <Button size={"icon"} variant={"ghost"}
       className={clsx("rounded-md hover:bg-accent flex gap-1 items-center", {
         "text-red-500": isLiked,
       })}
@@ -25,6 +26,6 @@ export default function LikeButton({
       }}
     >
       {isPending ? <Loader size={20} /> : <Heart size={20} />}
-    </button>
+    </Button>
   );
 }
