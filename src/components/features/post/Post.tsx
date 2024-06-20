@@ -3,6 +3,7 @@ import { PostHome } from "../../../query/post.query";
 import PostLayout from "./PostLayout";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Heart, MessageCircle } from "lucide-react";
+import LikeButton from "./LikeButton";
 
 type PostProps = {
   post: PostHome;
@@ -16,7 +17,7 @@ export default function Post({ post }: PostProps) {
       </Link>
       <div className="flex items-center gap-2">
         <Button size={"icon"} variant={"ghost"}>
-          <Heart size={20} />
+          <LikeButton postId={post.id} isLiked={post.likes.length > 0} />
         </Button>
         <Link
           href={`/posts/${post.id}/reply`}
