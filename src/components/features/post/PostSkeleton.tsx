@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Loader from "@/components/ui/loader";
 import { Skeleton } from "@/components/ui/skeleton";
 import clsx from "clsx";
 import { Heart, MessageCircle, MoreHorizontal } from "lucide-react";
@@ -8,9 +7,7 @@ export const PostPlaceholder = () => {
   return (
     <div className={clsx("flex w-full flex-row items-start p-4")}>
       <Avatar size="default">
-        <AvatarFallback>
-          <Loader />
-        </AvatarFallback>
+        <AvatarFallback>AA</AvatarFallback>
       </Avatar>
       <div className="ml-4 flex w-full flex-col gap-2">
         <div className="flex flex-row items-center gap-2">
