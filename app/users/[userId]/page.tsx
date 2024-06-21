@@ -6,6 +6,23 @@ import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { followUser } from "./follow.action";
 import Post from "@/components/features/post/Post";
+import { Metadata } from "next";
+
+export const generateMetadata = async ({ params }: PageParams): Promise<Metadata> => {
+  const user = await getUserProfile(params.userId);
+
+  if (!user) {
+    throw new Error("User not found")
+  }
+
+  return {
+    title: `${user?.name} (${user?.username})`,
+  };
+};
+
+type PageParams = {
+  params: { userId: string };
+};
 
 export default async function UserPage({
   params,
