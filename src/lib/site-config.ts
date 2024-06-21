@@ -2,5 +2,5 @@
 
 export const SiteConfig = {
     title: 'Githread',
-    description: 'You JUST need to CODE.',
+    description: 'The social network for developer.',
   } as const;
