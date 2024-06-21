@@ -23,7 +23,7 @@ export default function WriteModal({
         <WritePostForm
           user={user}
           onSubmit={createPost}
-          label={pathname?.includes("reply") ? "Reply" : "Post"}
+          label={pathname?.includes("reply") ? "Comment" : "Post"}
         />
       </DialogContent>
     </Dialog>
