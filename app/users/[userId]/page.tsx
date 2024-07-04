@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button";
 import { followUser } from "./follow.action";
 import Post from "@/components/features/post/Post";
 import { Metadata } from "next";
+import { AuthButton } from "@/components/features/auth/AuthButton";
 
-export const generateMetadata = async ({ params }: PageParams): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: PageParams): Promise<Metadata> => {
   const user = await getUserProfile(params.userId);
 
   if (!user) {
-    throw new Error("User not found")
+    throw new Error("User not found");
   }
 
   return {
@@ -31,6 +34,21 @@ export default async function UserPage({
 }) {
   const session = await getAuthSession();
   const user = await getUserProfile(params.userId);
+
+  if (!session?.user.id) {
+    return (
+      <div className="grid place-content-center h-[80vh] gap-4 px-4">
+        <div className="w-full grid">
+          <div className="flex items-center justify-center text-sm sm:text-nowrap">
+            <h5 className="text-lg font-semibold capitalize">Not Logged In</h5>{" "}
+            <div className="h-10 w-[0.5px] bg-accent mx-4"></div>You must be
+            logged in before you can view posts !
+          </div>
+        </div>
+        <AuthButton />
+      </div>
+    );
+  }
 
   if (!user) {
     return notFound();
