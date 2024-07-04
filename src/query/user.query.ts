@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { postSelectQuery } from "./post.query";
 import { cache } from "react";
+import { redirect } from "next/navigation";
 
 const userQuery = {
   id: true,
@@ -75,15 +76,15 @@ export const getUserEdit = async () => {
   const session = await getAuthSession();
 
   if (!session) {
-    throw new Error("No session available");
+    redirect("/");
   }
   return prisma.user.findUniqueOrThrow({
     where: {
       id: session.user.id,
     },
     select: userQuery,
-  })
-}
+  });
+};
 
 export type UserProfile = NonNullable<
   Prisma.PromiseReturnType<typeof getUserProfile>
