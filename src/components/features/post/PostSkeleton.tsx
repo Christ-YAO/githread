@@ -10,9 +10,11 @@ export const PostPlaceholder = () => {
         <AvatarFallback>AA</AvatarFallback>
       </Avatar>
       <div className="ml-4 flex w-full flex-col gap-2">
-        <div className="flex flex-row items-center gap-2">
-          <Skeleton className="h-6 w-32" />
-          <Skeleton className="h-6 w-4" />
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center gap-2">
+            <Skeleton className="h-6 w-32" />
+            <Skeleton className="h-6 w-4" />
+          </div>
           <button>
             <MoreHorizontal size={20} />
           </button>

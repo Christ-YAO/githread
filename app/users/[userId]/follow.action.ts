@@ -24,7 +24,7 @@ export const followUser = async (userId: string) => {
       },
     });
   } else {
-    const isFollowing = await prisma.follow.create({
+    await prisma.follow.create({
       data: {
         followerId: user.id,
         followingId: userId,
