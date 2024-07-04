@@ -15,8 +15,7 @@ export function LogoutButton() {
   });
   return (
     <Button
-      variant={"outline"}
-      size={"sm"}
+      variant="destructive"
       disabled={mutation.isPending}
       onClick={() => {
         mutation.mutate();
