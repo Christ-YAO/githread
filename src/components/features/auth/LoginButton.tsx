@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 export function LoginButton() {
   const mutation = useMutation({
     // mutationKey: "signIn",
-    mutationFn: async () => signIn(),
+    mutationFn: async () => signIn('github'),
     // onSuccess: () => window.location.reload(),
     onError: () => window.location.reload(),
   });
