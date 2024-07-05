@@ -3,8 +3,6 @@ import { getUserProfile } from "@/query/user.query";
 import Profile from "./Profile";
 import { notFound, redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { Button } from "@/components/ui/button";
-
 import Post from "@/components/features/post/Post";
 import { Metadata } from "next";
 import { AuthButton } from "@/components/features/auth/AuthButton";
