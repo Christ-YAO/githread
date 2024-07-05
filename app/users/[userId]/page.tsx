@@ -4,10 +4,11 @@ import Profile from "./Profile";
 import { notFound, redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
-import { followUser } from "./follow.action";
+
 import Post from "@/components/features/post/Post";
 import { Metadata } from "next";
 import { AuthButton } from "@/components/features/auth/AuthButton";
+import { FollowButton } from "./FollowButton";
 
 export const generateMetadata = async ({
   params,
@@ -76,7 +77,7 @@ export default async function UserPage({
     <div>
       <Profile user={user}>
         <form className="mt-4">
-          <Button
+          {/* <Button
             variant={"outline"}
             formAction={async () => {
               "use server";
@@ -88,7 +89,8 @@ export default async function UserPage({
             }}
           >
             {isFollowing ? "Unfollow" : "Follow"}
-          </Button>
+          </Button> */}
+          <FollowButton id={params.userId} isFollowing={isFollowing} />
         </form>
       </Profile>
       <div className="divide-y divide-accent border-t border-accent mt-4">
