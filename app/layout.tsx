@@ -9,6 +9,7 @@ import { PropsWithChildren } from "react";
 import { Providers } from "./Providers";
 import "./globals.css";
 import { TailwindIndicator } from "@/components/ui/utils/TailwindIndicator";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
               <Header />
               <div className="flex-1 max-w-lg m-auto w-full pt-16">
                 {children}
+                <Toaster />
               </div>
               {/* <Footer /> */}
             </div>
