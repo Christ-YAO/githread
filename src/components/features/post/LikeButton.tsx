@@ -19,7 +19,7 @@ export default function LikeButton({
   return (
     <Button size={"icon"} variant={"ghost"}
       className={clsx("rounded-md hover:bg-accent flex gap-1 items-center", {
-        "text-red-500": isLiked,
+        "text-red-600": isLiked,
       })}
       onClick={async () => {
         startTransition(() => likeAction(postId));

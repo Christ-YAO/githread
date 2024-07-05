@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 export const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="py-2 flex-1 flex justify-center items-center container gap-6 max-w-md">
+    <div className="py-2 flex-1 flex justify-center items-center container gap-6 max-w-sm">
       <Link
         href="/"
         className={clsx(

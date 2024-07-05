@@ -21,7 +21,7 @@ export function FollowButton({
   });
   return (
     <Button
-      variant={"outline"}
+      variant={"secondary"}
       size={"sm"}
       disabled={mutation.isPending}
       onClick={() => {
