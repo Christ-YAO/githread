@@ -1,6 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { buttonVariants } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { AlertTriangle, Home } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -11,7 +12,8 @@ export default function NotFound() {
       <AlertDescription className="mb-2">
         Post Not Found.
       </AlertDescription>
-      <Link href={"/"} className={buttonVariants({variant: "link"})}>Home</Link>
+      <Link href={"/"} className={cn(buttonVariants({variant: "secondary"}), 'flex gap-2')}>
+      <Home size={16} />Home</Link>
     </Alert>
   );
 }

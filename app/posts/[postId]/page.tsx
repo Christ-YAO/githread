@@ -11,6 +11,10 @@ export default async function PostView({
 }) {
   const session = await getAuthSession();
 
+  if (!session?.user.id) {
+    throw new Error(`Invalid`);
+  }
+
   const post = await getPostView(params.postId, session?.user.id);
 
   if (!post) {

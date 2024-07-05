@@ -11,7 +11,12 @@ export function Header() {
     <header className="border-b border-b-accent fixed z-20 top-0 w-full backdrop-blur-xl">
       <div className="container flex items-center justify-between py-2 max-w-5xl m-auto gap-1">
         <div className="flex gap-2 items-center">
-          <Typography variant="h3" as={Link} href="/">
+          <Typography
+            variant="h3"
+            as={Link}
+            href="/"
+            className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all"
+          >
             {SiteConfig.title}
           </Typography>
         </div>

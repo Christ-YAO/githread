@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 export const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="py-2 flex-1 flex justify-center items-center container gap-6 max-w-sm">
+    <div className="py-2 flex-1 flex justify-center items-center container gap-6 max-w-xs md:max-w-sm">
       <Link
         href="/"
         className={clsx(
@@ -20,7 +20,7 @@ export const Footer = () => {
           { "bg-accent": pathname === "/" }
         )}
       >
-        <Home size={20} />
+        <Home size={19} />
       </Link>
       <Link
         href="/write"
@@ -32,7 +32,7 @@ export const Footer = () => {
           { "bg-accent": pathname?.includes("/write") }
         )}
       >
-        <PenSquare size={20} />
+        <PenSquare size={19} />
       </Link>
       <Link
         href="/profile"
@@ -46,7 +46,7 @@ export const Footer = () => {
           }
         )}
       >
-        <User size={20} />
+        <User size={19} />
       </Link>
     </div>
   );
