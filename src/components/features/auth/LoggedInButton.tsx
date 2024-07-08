@@ -18,11 +18,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Loader from "@/components/ui/loader";
-import { useMutation } from "@tanstack/react-query";
 import { LogOut, User2 } from "lucide-react";
 import { Session } from "next-auth";
-import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { LogoutButton } from "./LogoutButton";
 
@@ -31,13 +28,12 @@ export type LoggedInButtonProps = {
 };
 
 export const LoggedInButton = (props: LoggedInButtonProps) => {
-
   return (
     <DropdownMenu>
       <AlertDialog>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="text-primary">
-            <Avatar size="default" className="mr-2 h-6 w-6">
+            <Avatar size="default" className="sm:mr-2 h-6 w-6">
               <AvatarFallback>{props.user?.name?.[0]}</AvatarFallback>
               {props.user.image && (
                 <AvatarImage
@@ -46,7 +42,7 @@ export const LoggedInButton = (props: LoggedInButtonProps) => {
                 />
               )}
             </Avatar>
-            {props.user.name}
+            <span className="hidden sm:block">{props.user.name}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

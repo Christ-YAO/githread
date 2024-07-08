@@ -5,11 +5,15 @@ import { ThemeToggle } from "../theme/ThemeToggle";
 import { SiteConfig } from "@/lib/site-config";
 import { AuthButton } from "../features/auth/AuthButton";
 import { Footer } from "./Footer";
+import GoBack from "./GoBack";
 
 export function Header() {
   return (
     <header className="border-b border-b-accent fixed z-20 top-0 w-full backdrop-blur-xl">
       <div className="container flex items-center justify-between py-2 max-w-5xl m-auto gap-1">
+        <div className="">
+          <GoBack />
+        </div>
         <div className="flex gap-2 items-center">
           <Typography
             variant="h3"
@@ -17,7 +21,8 @@ export function Header() {
             href="/"
             className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all"
           >
-            {SiteConfig.title}
+            <span className="hidden sm:block">{SiteConfig.title}</span>{" "}
+            <span className="block sm:hidden">~T.C~</span>
           </Typography>
         </div>
         {/* Links */}

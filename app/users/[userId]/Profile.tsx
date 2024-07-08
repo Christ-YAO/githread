@@ -12,7 +12,7 @@ export default function Profile({
   children,
 }: PropsWithChildren<{ user: UserProfile }>) {
   return (
-    <div className="mt-4">
+    <div className="mt-4 px-4">
       <div className="flex gap-2 items-start justify-between">
         <div className="flex flex-col gap-0.5">
           <h3 className="text-2xl font-bold">{user.name}</h3>
