@@ -10,15 +10,19 @@ import { Button } from "@/components/ui/button";
 export default function LikeButton({
   postId,
   isLiked,
+  likeCount,
 }: {
   postId: string;
   isLiked: boolean;
+  likeCount: number;
 }) {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <Button size={"icon"} variant={"ghost"}
-      className={clsx("rounded-md hover:bg-accent flex gap-1 items-center", {
+    <Button
+      size={"icon"}
+      variant={"ghost"}
+      className={clsx("rounded-md hover:bg-accent flex gap-1 items-center px-1", {
         "text-red-600": isLiked,
       })}
       onClick={async () => {
@@ -26,6 +30,7 @@ export default function LikeButton({
       }}
     >
       {isPending ? <Loader size={20} /> : <Heart size={20} />}
+      <span className="font-light text-xs">{likeCount}</span>
     </Button>
   );
 }
