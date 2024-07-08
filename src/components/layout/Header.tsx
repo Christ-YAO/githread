@@ -21,7 +21,7 @@ export function Header() {
             href="/"
             className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all"
           >
-            <span className="hidden sm:block">{SiteConfig.title}</span>{" "}
+            <span className="hidden sm:block tracking-tighter">{SiteConfig.title}</span>{" "}
             <span className="block sm:hidden">~T.C~</span>
           </Typography>
         </div>

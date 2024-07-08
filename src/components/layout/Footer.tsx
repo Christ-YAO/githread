@@ -10,7 +10,7 @@ import GoBack from "./GoBack";
 export const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="py-2 flex-1 hidden  sm:flex justify-center items-center container gap-2 max-w-xs md:max-w-sm">
+    <div className="py-2 flex-1 hidden  sm:flex justify-center items-center container gap-1 max-w-xs md:max-w-sm">
       <div className="hidden sm:block">
         <GoBack />
       </div>
@@ -24,7 +24,7 @@ export const Footer = () => {
           { "bg-accent": pathname === "/" }
         )}
       >
-        <Home size={19} />
+        <Home size={18} />
       </Link>
       <Link
         href="/write"
@@ -36,7 +36,7 @@ export const Footer = () => {
           { "bg-accent": pathname?.includes("/write") }
         )}
       >
-        <PenSquare size={19} />
+        <PenSquare size={18} />
       </Link>
       <Link
         href="/profile"
@@ -50,7 +50,7 @@ export const Footer = () => {
           }
         )}
       >
-        <User size={19} />
+        <User size={18} />
       </Link>
     </div>
   );
