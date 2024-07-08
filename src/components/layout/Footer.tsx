@@ -24,7 +24,7 @@ export const Footer = () => {
           { "bg-accent": pathname === "/" }
         )}
       >
-        <Home size={18} />
+        <Home size={20} />
       </Link>
       <Link
         href="/write"
@@ -36,7 +36,7 @@ export const Footer = () => {
           { "bg-accent": pathname?.includes("/write") }
         )}
       >
-        <PenSquare size={18} />
+        <PenSquare size={20} />
       </Link>
       <Link
         href="/profile"
@@ -50,7 +50,7 @@ export const Footer = () => {
           }
         )}
       >
-        <User size={18} />
+        <User size={20} />
       </Link>
     </div>
   );

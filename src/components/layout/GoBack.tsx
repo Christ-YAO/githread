@@ -10,7 +10,7 @@ export default function GoBack() {
   const router = useRouter();
   return (
     <Button
-      variant={"ghost"}
+      variant={"secondary"}
       onClick={() => {
         router.back();
       }}
