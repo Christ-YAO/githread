@@ -42,7 +42,7 @@ export default function PostLayout({
         <div>
           <div className="flex flex-row items-center justify-between gap-2">
             <Link href={`/users/${user.id}`} className="flex gap-2">
-              <p className="text-sm text-card-foreground mr-auto">
+              <p className="text-sm font-medium text-card-foreground mr-auto hover:underline transition-all">
                 {user.username}
               </p>
               {createdAdt ? (

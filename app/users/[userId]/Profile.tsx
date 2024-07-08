@@ -16,7 +16,7 @@ export default function Profile({
       <div className="flex gap-2 items-start justify-between">
         <div className="flex flex-col gap-0.5">
           <h3 className="text-2xl font-bold">{user.name}</h3>
-          <p>{user.username}</p>
+          <p className="font-light">{user.username}</p>
         </div>
         <Avatar size="lg">
           {user.image ? (
@@ -28,7 +28,7 @@ export default function Profile({
         </Avatar>
       </div>
       {user.bio ? (
-        <p className="text-sm font-light">{user.bio}</p>
+        <p className="text-sm font-light mt-4">{user.bio}</p>
       ) : (
         <p className="text-muted-foreground text-sm font-light">No bio</p>
       )}
