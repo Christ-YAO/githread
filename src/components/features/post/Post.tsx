@@ -4,6 +4,7 @@ import PostLayout from "./PostLayout";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Heart, MessageCircle } from "lucide-react";
 import LikeButton from "./LikeButton";
+import { cn } from "@/lib/utils";
 
 type PostProps = {
   post: PostHome;
@@ -17,16 +18,21 @@ export default function Post({ post }: PostProps) {
       </Link>
       <div className="flex items-center gap-2">
         <div>
-          <LikeButton postId={post.id} isLiked={post.likes.length > 0} />
+          <LikeButton
+            postId={post.id}
+            isLiked={post.likes.length > 0}
+            likeCount={post._count.likes}
+          />
         </div>
         <Link
           href={`/posts/${post.id}/reply`}
-          className={buttonVariants({ variant: "ghost", size: "icon" })}
+          className={cn(buttonVariants({ variant: "ghost", size: "icon" }), 'px-1')}
         >
           <MessageCircle size={20} />
+          <p className="font-light text-xs ml-1">{post._count.replies}</p>
         </Link>
       </div>
-      <div>
+      {/* <div>
         <Link
           className="text-muted-foreground text-sm"
           href={`/posts/${post.id}`}
@@ -40,7 +46,7 @@ export default function Post({ post }: PostProps) {
         >
           {post._count.replies} comments
         </Link>
-      </div>
+      </div> */}
     </PostLayout>
   );
 }
