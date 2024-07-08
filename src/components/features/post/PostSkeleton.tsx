@@ -25,17 +25,17 @@ export const PostPlaceholder = () => {
         <div className="flex gap-4 items-center">
           <button
             className={clsx(
-              "rounded-md hover:bg-accent flex gap-1 items-center",
+              "rounded-md hover:bg-accent flex gap-1 items-center p-1",
               {}
             )}
           >
-            <Heart size={20} />
+            <Heart size={18} />
           </button>
-          <span className="rounded-md hover:bg-accent flex gap-1 items-center">
-            <MessageCircle size={20} />
+          <span className="rounded-md hover:bg-accent flex gap-1 items-center p-1">
+            <MessageCircle size={18} />
           </span>
         </div>
-        <div>
+        {/* <div>
           <span className="text-muted-foreground text-sm">
             <Skeleton className="h-6 w-4 inline-block" /> likes
           </span>
@@ -43,7 +43,7 @@ export const PostPlaceholder = () => {
           <span className="text-muted-foreground text-sm">
             <Skeleton className="h-6 w-4 inline-block" /> replies
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
