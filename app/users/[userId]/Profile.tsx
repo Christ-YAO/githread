@@ -28,7 +28,7 @@ export default function Profile({
         </Avatar>
       </div>
       {user.bio ? (
-        <p className="text-sm font-light mt-4">{user.bio}</p>
+        <pre className="text-sm font-light mt-4 text-wrap font-sans">{user.bio}</pre>
       ) : (
         <p className="text-muted-foreground text-sm font-light">No bio</p>
       )}

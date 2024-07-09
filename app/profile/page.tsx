@@ -37,7 +37,7 @@ export default async function ProfilPage() {
         <div className="mt-4">
           <Link
             href={"profile/edit"}
-            className={buttonVariants({ variant: "outline" })}
+            className={buttonVariants({ variant: "secondary" })}
           >
             Edit Profile
           </Link>
