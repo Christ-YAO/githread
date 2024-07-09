@@ -97,7 +97,7 @@ export const ProfileForm = ({ onSubmit, user }: ProfileFormProps) => {
           <FormItem>
             <FormLabel>Bio</FormLabel>
             <FormControl>
-              <Textarea placeholder="CEO of Meta" {...field} />
+              <Textarea placeholder="CEO of Meta" {...field} className='min-h-36' />
             </FormControl>
             <FormMessage />
           </FormItem>

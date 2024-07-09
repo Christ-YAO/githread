@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { AuthButton } from "@/components/features/auth/AuthButton";
+import { Edit } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default async function ProfilPage() {
   const session = await getAuthSession();
@@ -37,9 +39,12 @@ export default async function ProfilPage() {
         <div className="mt-4">
           <Link
             href={"profile/edit"}
-            className={buttonVariants({ variant: "secondary" })}
+            className={cn(
+              buttonVariants({ variant: "secondary" }),
+              "flex gap-2 items-center font-light"
+            )}
           >
-            Edit Profile
+            <Edit size={16} /> Edit Profile
           </Link>
         </div>
       </Profile>

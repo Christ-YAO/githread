@@ -5,6 +5,7 @@ import Loader from "@/components/ui/loader";
 import { useMutation } from "@tanstack/react-query";
 import { followUser } from "./follow.action";
 import { toast } from "sonner";
+import { UserRoundMinus, UserRoundPlus } from "lucide-react";
 
 export function FollowButton({
   id,
@@ -13,7 +14,7 @@ export function FollowButton({
   id: string;
   isFollowing: { id: string } | null;
 }) {
-    let toastActive = false;
+  let toastActive = false;
   const mutation = useMutation({
     // mutationKey: "signIn",
     mutationFn: async () => followUser(id),
@@ -32,9 +33,15 @@ export function FollowButton({
       {mutation.isPending ? (
         <Loader className="mr-2" size={12} />
       ) : isFollowing ? (
-        "Unfollow"
+        <span className="flex items-center gap-2">
+          <UserRoundMinus size={16}/>
+          Unfollow
+        </span>
       ) : (
-        "Follow"
+        <span className="flex items-center gap-2">
+          {" "}
+          <UserRoundPlus size={16}/> Follow
+        </span>
       )}
     </Button>
   );
