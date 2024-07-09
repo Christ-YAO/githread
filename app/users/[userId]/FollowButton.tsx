@@ -33,7 +33,7 @@ export function FollowButton({
       {mutation.isPending ? (
         <Loader className="mr-2" size={12} />
       ) : isFollowing ? (
-        <span className="flex items-center gap-2">
+        <span className="flex items-center gap-2 text-red-600">
           <UserRoundMinus size={16}/>
           Unfollow
         </span>
