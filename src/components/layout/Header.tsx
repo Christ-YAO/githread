@@ -9,7 +9,7 @@ import { NavBarLinks } from "./NavBarLinks";
 
 export function Header() {
   return (
-    <header className="fixed z-20 top-0 w-full bg-[#000000c8] backdrop-blur-xl">
+    <header className="fixed z-20 top-0 w-full bg-[#09090bcf] backdrop-blur-xl">
       <div className="container flex items-center justify-between py-2 max-w-5xl m-auto gap-1">
         <div className="block md:hidden">
           <GoBack />

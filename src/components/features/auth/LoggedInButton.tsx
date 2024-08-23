@@ -32,7 +32,7 @@ export const LoggedInButton = (props: LoggedInButtonProps) => {
     <DropdownMenu>
       <AlertDialog>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="text-primary">
+          <Button variant="ghost" size="sm" className="text-primary border-accent border">
             <Avatar size="default" className="sm:mr-2 h-6 w-6">
               <AvatarFallback>{props.user?.name?.[0]}</AvatarFallback>
               {props.user.image && (
