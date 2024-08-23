@@ -4,14 +4,14 @@ import { Typography } from "../ui/Typography";
 import { ThemeToggle } from "../theme/ThemeToggle";
 import { SiteConfig } from "@/lib/site-config";
 import { AuthButton } from "../features/auth/AuthButton";
-import { Footer } from "./Footer";
 import GoBack from "./GoBack";
+import { NavBarLinks } from "./NavBarLinks";
 
 export function Header() {
   return (
-    <header className="fixed z-20 top-0 w-full backdrop-blur-xl">
+    <header className="fixed z-20 top-0 w-full bg-[#000000c8] backdrop-blur-xl">
       <div className="container flex items-center justify-between py-2 max-w-5xl m-auto gap-1">
-        <div className="block sm:hidden">
+        <div className="block md:hidden">
           <GoBack />
         </div>
         <div className="flex gap-2 items-center">
@@ -21,12 +21,12 @@ export function Header() {
             href="/"
             className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all"
           >
-            <span className="hidden sm:block tracking-tighter">{SiteConfig.title}</span>{" "}
-            <span className="block sm:hidden">~T.C~</span>
+            <span className="hidden md:block tracking-tighter">{SiteConfig.title}</span>{" "}
+            <span className="block md:hidden">~T.C~</span>
           </Typography>
         </div>
         {/* Links */}
-        <Footer />
+        <NavBarLinks />
         {/* Links */}
         <div className="flex items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
