@@ -1,5 +1,4 @@
 // app/layout.
-import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SiteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -11,6 +10,7 @@ import "./globals.css";
 import "./index.css";
 import { TailwindIndicator } from "@/components/ui/utils/TailwindIndicator";
 import { Toaster } from "@/components/ui/sonner";
+import { Footer } from "@/components/layout/Footer";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -42,7 +42,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
                 {children}
                 <Toaster />
               </div>
-              {/* <Footer /> */}
+              <Footer />
             </div>
             {modal}
             <TailwindIndicator />
