@@ -27,7 +27,9 @@ export default function Post({ post }: PostProps) {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   // Function to open zoomed image
   const openZoomedImage = (imageUrl: string | null) => {
-    setZoomedImage(imageUrl);
+    setTimeout(() => {
+      setZoomedImage(imageUrl);
+    }, 300);
   };
   // Function to close zoomed image
   const closeZoomedImage = () => {
@@ -53,7 +55,7 @@ export default function Post({ post }: PostProps) {
           <CarouselContent>
             {post.media?.map((media, index) => (
               <CarouselItem key={index} className="sm:basis-1/2 cursor-pointer h-full" onClick={() => openZoomedImage(media)}>
-                <img src={media || ""} alt="post image" className="h-full w-fit rounded" />
+                <img src={media || ""} alt="post image" className="h-full w-fit rounded active:scale-[97%] transition-all duration-300" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -62,14 +64,14 @@ export default function Post({ post }: PostProps) {
         </Carousel>
       ) : (
         post.media && post.media.length === 1 ? (
-          <img src={post.media[0]} alt="post image" className="w-fit rounded cursor-pointer" onClick={() => openZoomedImage(post.media[0])}/>
+          <img src={post.media[0]} alt="post image" className="w-fit rounded cursor-pointer active:scale-[97%] transition-all duration-300" onClick={() => openZoomedImage(post.media[0])}/>
         ) : null
       )}
 
       {/* Render the zoomed image */}
       {zoomedImage && (
         <div className="zoomed-image-container" onClick={closeZoomedImage}>
-          <img src={zoomedImage} alt="zoomed-image" />
+          <img src={zoomedImage} alt="zoomed-image" className="zoomed-image" />
         </div>
       )}
 
