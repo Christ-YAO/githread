@@ -55,7 +55,7 @@ export default function Post({ post }: PostProps) {
           <CarouselContent>
             {post.media?.map((media, index) => (
               <CarouselItem key={index} className="sm:basis-1/2 cursor-pointer h-full" onClick={() => openZoomedImage(media)}>
-                <img src={media || ""} alt="post image" className="h-full w-fit rounded active:scale-[97%] transition-all duration-300" />
+                <img src={media || ""} alt="post image" className="h-full w-fit rounded active:scale-[96%] transition-all duration-300" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -64,7 +64,7 @@ export default function Post({ post }: PostProps) {
         </Carousel>
       ) : (
         post.media && post.media.length === 1 ? (
-          <img src={post.media[0]} alt="post image" className="w-fit rounded cursor-pointer active:scale-[97%] transition-all duration-300" onClick={() => openZoomedImage(post.media[0])}/>
+          <img src={post.media[0]} alt="post image" className="w-fit rounded cursor-pointer active:scale-[96%] transition-all duration-300" onClick={() => openZoomedImage(post.media[0])}/>
         ) : null
       )}
 
