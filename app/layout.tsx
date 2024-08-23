@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
 import { Providers } from "./Providers";
 import "./globals.css";
+import "./index.css";
 import { TailwindIndicator } from "@/components/ui/utils/TailwindIndicator";
 import { Toaster } from "@/components/ui/sonner";
 

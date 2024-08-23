@@ -11,7 +11,7 @@ export default async function Home() {
   await new Promise((r) => setTimeout(r, 5000));
 
   return (
-    <div className="divide-y divide-muted ">
+    <div className="divide-y divide-muted">
       <>
         {posts.map((p) => (
           <Post post={p} key={p.id} />

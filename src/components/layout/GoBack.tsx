@@ -14,8 +14,8 @@ export default function GoBack() {
       onClick={() => {
         router.back();
       }}
-      className={cn("rounded-full py-1 px-[10px] hidden", {
-        block: pathname !== "/",
+      className={cn("rounded-full py-1 px-[10px] opacity-0", {
+        "opacity-100 transition-all": pathname !== "/",
       })}
     >
       <ArrowLeftIcon size={16} />
