@@ -35,7 +35,7 @@ export default function Post({ post }: PostProps) {
   const closeZoomedImage = () => {
     setZoomedImage(null);
   };
-  
+
 
   const { scrollDir, scrollPosition } = useDetectScroll();
 
@@ -50,12 +50,12 @@ export default function Post({ post }: PostProps) {
       <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
         {post.content}
       </Link>
-      {post.media && post.media?.length > 1 ? (
+      {post.mediaList && post.mediaList?.length > 1 ? (
         <Carousel className="mr-14 sm:-ml-4 sm:mr-10">
           <CarouselContent>
-            {post.media?.map((media, index) => (
+            {post.mediaList?.map((media, index) => (
               <CarouselItem key={index} className="sm:basis-1/2 cursor-pointer h-full" onClick={() => openZoomedImage(media)}>
-                <img src={media || ""} alt="post image" className="h-full w-fit rounded active:scale-[96%] transition-all duration-300" />
+                <img src={media || ""} alt={media} className="h-full w-fit rounded active:scale-[96%] transition-all duration-300" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -63,8 +63,8 @@ export default function Post({ post }: PostProps) {
           <CarouselNext className="hidden group-hover:flex transition-all" />
         </Carousel>
       ) : (
-        post.media && post.media.length === 1 ? (
-          <img src={post.media[0]} alt="post image" className="w-fit rounded cursor-pointer active:scale-[96%] transition-all duration-300" onClick={() => openZoomedImage(post.media[0])}/>
+        post.mediaList && post.mediaList.length === 1 ? (
+          <img src={post.mediaList[0].includes("http") ? post.mediaList[0] : `/${post.mediaList[0]}`} alt={"post image"} className="w-fit rounded cursor-pointer active:scale-[96%] transition-all duration-300" onClick={() => openZoomedImage(post.mediaList[0])} />
         ) : null
       )}
 
@@ -91,21 +91,6 @@ export default function Post({ post }: PostProps) {
           <p className="font-light text-xs ml-1">{post._count.replies}</p>
         </Link>
       </div>
-      {/* <div>
-        <Link
-          className="text-muted-foreground text-sm"
-          href={`/posts/${post.id}`}
-        >
-          {post._count.likes} likes
-        </Link>
-        {" . "}
-        <Link
-          className="text-muted-foreground text-sm"
-          href={`/posts/${post.id}`}
-        >
-          {post._count.replies} comments
-        </Link>
-      </div> */}
     </PostLayout>
   );
 }
