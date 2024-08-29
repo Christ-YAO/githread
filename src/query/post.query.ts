@@ -6,6 +6,7 @@ export const postSelectQuery = (userId?: string) =>
     id: true,
     content: true,
     media: true,
+    mediaList: true,
     createdAt: true,
     user: {
       select: {
