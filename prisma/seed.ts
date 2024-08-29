@@ -45,7 +45,7 @@ const main = async () => {
     const post = {
       content: faker.lorem.sentence(randomWorldCount),
       userId: users[randomUserIndex].id,
-      media: mediaArray,
+      mediaList: mediaArray,
     } satisfies Prisma.PostUncheckedCreateInput;
 
     const p = await prisma.post.create({ data: post });
