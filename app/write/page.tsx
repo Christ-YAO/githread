@@ -9,7 +9,7 @@ export default async function WritePage() {
   return (
     <WritePostForm
       user={user}
-      onSubmit={createPost}
+      // onSubmit={createPost}
       label="Post"
     />
   );
