@@ -11,49 +11,110 @@ import {
   FormMessage,
   useZodForm,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const Schema = z.object({
   content: z.string().min(1).max(500),
+  media: z.instanceof(File).refine((file) => file.type.startsWith('image/'), 'Must be an image file').optional(),
+  mediaList: z.array(z.instanceof(File).refine((file) => file.type.startsWith('image/'), 'Must be an image file')).default([]),
 });
 
 export type WritePostFormValues = z.infer<typeof Schema>;
 
 type WritePostFormProps = {
   user: User;
-  onSubmit: (value: WritePostFormValues) => Promise<string>;
+  // onSubmit: (value: WritePostFormValues) => Promise<string>;
   label: string;
 };
 
-export default function WritePostForm({ user, onSubmit, label }: WritePostFormProps) {
-  const form = useZodForm({
-    schema: Schema,
-  });
+export default function WritePostForm({ user, label }: WritePostFormProps) {
+  // const form = useZodForm({
+  //   schema: Schema,
+  // });
+
+  const form = useForm<z.infer<typeof Schema>>({
+    resolver: zodResolver(Schema),
+    defaultValues: {
+      content: "",
+      media: new File([], ""),
+      mediaList: [],
+    },
+  })
   const router = useRouter();
+
+  const onSubmit = async (values: WritePostFormValues) => {
+    console.log("Submit client side", values);
+
+    const formData = new FormData();
+    formData.append("content", values.content);
+    if (values.media) {
+      formData.append("media", values.media);
+    }
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("Submit server side", result);
+
+      router.push(`/posts/${result.id}`);
+      router.refresh();
+    } else {
+      console.error("Failed to submit post");
+    }
+  };
+
   return (
     <PostLayout user={user}>
       <Form
         form={form}
-        onSubmit={async (values) => {
-          const result = await onSubmit(values);
-          console.log("Submit client side", result);
-
-          router.push(`/posts/${result}`);
-          router.refresh();
-        }}
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-4"
       >
         <FormField
           control={form.control}
           name="content"
           render={({ field }) => (
             <FormItem>
-              <ContentTextArea {...field} />
+              <ContentTextArea {...field} className="font-light" />
               <FormMessage />
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="media"
+          render={({ field }) => (
+            <FormItem>
+              <Input type="file" onChange={(e) => {
+                const file = (e.target as HTMLInputElement)?.files?.[0];
+                form.setValue('media', file)
+              }}
+                className="cursor-pointer mb-2 font-light" />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* <FormField
+          control={form.control}
+          name="mediaList"
+          render={({ field }) => (
+            <FormItem>
+              <Input  {...field} />
+              <FormMessage />
+            </FormItem>
+          )}
+        /> */}
 
         <div className="flex w-full justify-end">
           <Button size={"sm"}>{label}</Button>
