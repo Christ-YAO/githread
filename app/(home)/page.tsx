@@ -8,7 +8,7 @@ export default async function Home() {
 
   const posts = await getLatestPosts(session?.user.id);
 
-  await new Promise((r) => setTimeout(r, 5000));
+  await new Promise((r) => setTimeout(r, 2000));
 
   return (
     <div className="divide-y divide-muted">
