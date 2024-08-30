@@ -3,7 +3,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { usePathname, useRouter } from "next/navigation";
 import { User } from "@prisma/client";
-import WritePostForm, { WritePostFormValues } from "../../../../write/WritePostForm";
+import WriteReplyForm, { WritePostFormValues } from "../../../../write/WriteReplyForm";
 
 export default function ReplyModal({
   user,
@@ -20,10 +20,9 @@ export default function ReplyModal({
   return (
     <Dialog open={pathname?.includes(path)} onOpenChange={() => router.back()}>
       <DialogContent>
-        <WritePostForm
+        <WriteReplyForm
           user={user}
           onSubmit={createReply}
-          label={pathname?.includes("reply") ? "Reply" : "Post"}
         />
       </DialogContent>
     </Dialog>
