@@ -36,7 +36,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
           )}
         >
           <Providers>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="relative flex min-h-screen flex-col bg-accent/50 dark:bg-inherit">
               <Header />
               <div className="flex-1 max-w-xl m-auto w-full pt-16 pb-12 md:pb-4">
                 {children}

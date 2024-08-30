@@ -30,7 +30,7 @@ export default function PostLayout({
 }: PostLayoutProps) {
   return (
     <div className={clsx("flex w-full flex-row items-start p-4", className)}>
-      <Avatar size="default">
+      <Avatar size="default" className="border">
         {user.image ? (
           <AvatarImage src={user.image} alt={`${user.username}`} />
         ) : null}
