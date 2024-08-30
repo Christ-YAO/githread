@@ -2,7 +2,6 @@ import { getAuthSession } from "@/lib/auth";
 import { getUserProfile } from "@/query/user.query";
 import Profile from "../users/[userId]/Profile";
 import Post from "@/components/features/post/Post";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { AuthButton } from "@/components/features/auth/AuthButton";
@@ -50,7 +49,7 @@ export default async function ProfilPage() {
       </Profile>
       <div className="divide-y divide-accent border-t border-accent mt-4">
         {user.posts.map((post) => (
-          <Post post={post} key={post.id} />
+          <Post post={post} key={post.id} userId={session.user.id} />
         ))}
       </div>
     </div>

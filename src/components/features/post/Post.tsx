@@ -19,9 +19,10 @@ import useDetectScroll, { Direction } from "@smakss/react-scroll-direction";
 
 type PostProps = {
   post: PostHome;
+  userId: string | undefined;
 };
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post, userId }: PostProps) {
 
   // State variable for managing zoomed image
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
@@ -46,7 +47,7 @@ export default function Post({ post }: PostProps) {
   }, [scrollPosition]);
 
   return (
-    <PostLayout user={post.user} postId={post.id} createdAdt={post.createdAt} className="group">
+    <PostLayout user={post.user} postId={post.id} createdAdt={post.createdAt} userId={userId} className="group">
       <Link href={`/posts/${post.id}`} className="text-sm text-foreground">
         {post.content}
       </Link>

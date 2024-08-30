@@ -1,9 +1,9 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { formatDate } from "@/lib/date";
-import { LogOut, MoreHorizontal, OctagonAlert } from "lucide-react";
+import { MoreHorizontal, OctagonAlert, SquarePen, Trash2 } from "lucide-react";
 import { PostHome } from "@/query/post.query";
 import {
   DropdownMenu,
@@ -13,12 +13,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 type PostLayoutProps = PropsWithChildren<{
   user: PostHome["user"];
   createdAdt?: Date;
   className?: string;
   postId?: string;
+  userId?: string | undefined;
 }>;
 
 export default function PostLayout({
@@ -27,7 +29,11 @@ export default function PostLayout({
   createdAdt,
   postId,
   children,
+  userId,
 }: PostLayoutProps) {
+
+  const router = useRouter();
+
   return (
     <div className={clsx("flex w-full flex-row items-start p-4", className)}>
       <Avatar size="default" className="border">
@@ -59,10 +65,29 @@ export default function PostLayout({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem className="text-red-600 flex items-center justify-between font-bold cursor-pointer">
+                <DropdownMenuItem className="flex items-center justify-between font-medium cursor-pointer">
                   report
                   <OctagonAlert size={16} className="ml-2" />
                 </DropdownMenuItem>
+                {userId === user.id && (
+                  <>
+                    <DropdownMenuItem className="texflex items-center justify-between font-medium cursor-pointer">
+                      update
+                      <SquarePen size={16} className="ml-2" />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={async () => {
+                      // if (confirm("Are you sure you want to delete this post?")) {
+                      await fetch(`/api/delete/${postId}`, {
+                        method: "DELETE",
+                      });
+                      router.refresh();
+                      // }
+                    }} className="text-red-600 flex items-center justify-between font-medium cursor-pointer">
+                      delete
+                      <Trash2 size={16} className="ml-2" />
+                    </DropdownMenuItem>
+                  </>
+                )}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
