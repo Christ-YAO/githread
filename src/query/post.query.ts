@@ -36,7 +36,7 @@ export const getLatestPosts = (userId?: string) =>
     where: {
       parentId: null,
     },
-    take: 20,
+    take: 25,
     orderBy: {
       createdAt: "desc",
     },
