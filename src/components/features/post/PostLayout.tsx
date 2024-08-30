@@ -64,14 +64,14 @@ export default function PostLayout({
                   <MoreHorizontal size={20} strokeWidth={"1.5px"} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem className="flex items-center justify-between font-medium cursor-pointer">
+              <DropdownMenuContent className=" divide-y divide-muted">
+                <DropdownMenuItem className="flex items-center justify-between cursor-pointer rounded-none">
                   report
                   <OctagonAlert size={16} className="ml-2" />
                 </DropdownMenuItem>
                 {userId === user.id && (
                   <>
-                    <DropdownMenuItem className="texflex items-center justify-between font-medium cursor-pointer">
+                    <DropdownMenuItem className="texflex items-center justify-between cursor-pointer rounded-none">
                       update
                       <SquarePen size={16} className="ml-2" />
                     </DropdownMenuItem>
@@ -82,7 +82,7 @@ export default function PostLayout({
                       });
                       router.refresh();
                       // }
-                    }} className="text-red-600 flex items-center justify-between font-medium cursor-pointer">
+                    }} className="text-red-600 flex items-center justify-between cursor-pointer rounded-none">
                       delete
                       <Trash2 size={16} className="ml-2" />
                     </DropdownMenuItem>
