@@ -7,11 +7,11 @@ import { User } from "@prisma/client";
 
 export default function WriteModal({
   user,
-  createPost,
+  // createPost,
   path,
 }: {
   user: User;
-  createPost: (values: WritePostFormValues) => Promise<string>;
+  // createPost: (values: WritePostFormValues) => Promise<string>;
   path: string;
 }) {
   const router = useRouter();
@@ -23,7 +23,6 @@ export default function WriteModal({
         <WritePostForm
           user={user}
           // onSubmit={createPost}
-          label={pathname?.includes("reply") ? "Comment" : "Post"}
         />
       </DialogContent>
     </Dialog>
