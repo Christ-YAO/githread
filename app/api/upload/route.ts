@@ -10,9 +10,9 @@ export async function POST(request: Request) {
 
   const user = await getUser(); // Assurez-vous que cette fonction est définie pour récupérer l'utilisateur
 
-  let mediaFileName = "";
+  let mediaFileName: string | null = null;
 
-  if (media) {
+  if (media !== null && media.size > 0) {
     const arrayBuffer = await media.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     mediaFileName = `${Date.now()}_${media.name}`;
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   const post = await prisma.post.create({
     data: {
       content: content,
-      mediaList: [mediaFileName],
+      mediaList: mediaFileName ? [mediaFileName] : [],
       userId: user.id,
     },
   });
