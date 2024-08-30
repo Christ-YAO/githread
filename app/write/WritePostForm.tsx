@@ -20,7 +20,7 @@ import { z } from "zod";
 
 const Schema = z.object({
   content: z.string().min(1).max(500),
-  media: z.instanceof(File).refine((file) => file.type.startsWith('image/'), 'Must be an image file').optional(),
+  media: z.instanceof(File).optional(),
   mediaList: z.array(z.instanceof(File).refine((file) => file.type.startsWith('image/'), 'Must be an image file')).default([]),
 });
 
@@ -29,13 +29,9 @@ export type WritePostFormValues = z.infer<typeof Schema>;
 type WritePostFormProps = {
   user: User;
   // onSubmit: (value: WritePostFormValues) => Promise<string>;
-  label: string;
 };
 
-export default function WritePostForm({ user, label }: WritePostFormProps) {
-  // const form = useZodForm({
-  //   schema: Schema,
-  // });
+export default function WritePostForm({ user }: WritePostFormProps) {
 
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
@@ -70,13 +66,15 @@ export default function WritePostForm({ user, label }: WritePostFormProps) {
     } else {
       console.error("Failed to submit post");
     }
+    router.refresh();
   };
 
   return (
     <PostLayout user={user}>
       <Form
         form={form}
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(onSubmit)
+        }
         className="flex flex-col gap-4"
       >
         <FormField
@@ -105,19 +103,8 @@ export default function WritePostForm({ user, label }: WritePostFormProps) {
           )}
         />
 
-        {/* <FormField
-          control={form.control}
-          name="mediaList"
-          render={({ field }) => (
-            <FormItem>
-              <Input  {...field} />
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-
         <div className="flex w-full justify-end">
-          <Button size={"sm"}>{label}</Button>
+          <Button size={"sm"}>Post</Button>
         </div>
       </Form>
     </PostLayout>
