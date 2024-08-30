@@ -71,7 +71,7 @@ export default function Post({ post }: PostProps) {
       {/* Render the zoomed image */}
       {zoomedImage && (
         <div className="zoomed-image-container" onClick={closeZoomedImage}>
-          <img src={post.mediaList[0].includes("http") ? post.mediaList[0] : `/${post.mediaList[0]}`} alt="zoomed-image" className="zoomed-image" />
+          <img src={zoomedImage.includes("http") ? zoomedImage : `/${zoomedImage}`} alt="zoomed-image" className="zoomed-image" />
         </div>
       )}
 
