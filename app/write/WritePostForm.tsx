@@ -73,8 +73,7 @@ export default function WritePostForm({ user }: WritePostFormProps) {
     <PostLayout user={user}>
       <Form
         form={form}
-        onSubmit={form.handleSubmit(onSubmit)
-        }
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
         <FormField

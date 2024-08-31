@@ -19,7 +19,7 @@ export default async function PostReply({
 
   return (
     <div>
-      <Post post={post} />
+      <Post post={post} userId={user.id} />
       <WriteReplyForm
         user={user}
         onSubmit={async (values) => {
