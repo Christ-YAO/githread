@@ -65,16 +65,20 @@ export default function PostLayout({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className=" divide-y divide-muted">
-                <DropdownMenuItem className="flex items-center justify-between cursor-pointer rounded-none">
-                  report
-                  <OctagonAlert size={16} className="ml-2" />
-                </DropdownMenuItem>
+                {userId !== user.id && (
+                  <DropdownMenuItem className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
+                    report
+                    <OctagonAlert size={16} className="ml-2" />
+                  </DropdownMenuItem>
+                )}
                 {userId === user.id && (
                   <>
-                    <DropdownMenuItem className="texflex items-center justify-between cursor-pointer rounded-none">
+                    <Link href={`/posts/${postId}/edit`}>
+                    <DropdownMenuItem className="flex items-center justify-between cursor-pointer rounded-none font-normal">
                       update
                       <SquarePen size={16} className="ml-2" />
                     </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuItem onClick={async () => {
                       // if (confirm("Are you sure you want to delete this post?")) {
                       await fetch(`/api/delete/${postId}`, {
@@ -82,7 +86,7 @@ export default function PostLayout({
                       });
                       router.refresh();
                       // }
-                    }} className="text-red-600 flex items-center justify-between cursor-pointer rounded-none">
+                    }} className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
                       delete
                       <Trash2 size={16} className="ml-2" />
                     </DropdownMenuItem>
