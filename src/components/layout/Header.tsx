@@ -16,12 +16,11 @@ export function Header() {
         </div>
         <div className="flex gap-2 items-center">
           <Typography
-            variant="h3"
             as={Link}
             href="/"
-            className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all"
+            className="font-extralight bg-accent/50 p-1 rounded hover:bg-accent transition-all text-sm font-mono text-neutral-400"
           >
-            <span className="hidden md:block tracking-tighter">{SiteConfig.title}</span>{" "}
+            <span className="hidden md:block tracking-wide">{SiteConfig.title}</span>{" "}
             <span className="block md:hidden">~T.C~</span>
           </Typography>
         </div>

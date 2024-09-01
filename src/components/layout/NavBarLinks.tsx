@@ -24,7 +24,7 @@ export const NavBarLinks = () => {
           { "bg-accent": pathname === "/" }
         )}
       >
-        <Home size={20} />
+        <Home size={16} />
       </Link>
       <Link
         href="/write"
@@ -36,7 +36,7 @@ export const NavBarLinks = () => {
           { "bg-accent": pathname?.includes("/write") }
         )}
       >
-        <PenSquare size={20} />
+        <PenSquare size={16} />
       </Link>
       <Link
         href="/profile"
@@ -50,7 +50,7 @@ export const NavBarLinks = () => {
           }
         )}
       >
-        <User size={20} />
+        <User size={16} />
       </Link>
     </div>
   );

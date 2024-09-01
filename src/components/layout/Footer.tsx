@@ -23,7 +23,7 @@ export function Footer() {
                             { "bg-accent/65": pathname === "/" }
                         )}
                     >
-                        <Home size={20} />
+                        <Home size={16} />
                     </Link>
                     <Link
                         href="/write"
@@ -35,7 +35,7 @@ export function Footer() {
                             { "bg-accent/65": pathname?.includes("/write") }
                         )}
                     >
-                        <PenSquare size={20} />
+                        <PenSquare size={16} />
                     </Link>
                     <Link
                         href="/profile"
@@ -49,7 +49,7 @@ export function Footer() {
                             }
                         )}
                     >
-                        <User size={20} />
+                        <User size={16} />
                     </Link>
                 </div>
                 {/* Links */}
