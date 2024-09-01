@@ -63,12 +63,12 @@ export default function WriteEditForm({ user, post }: WritePostFormProps) {
             const result = await response.json();
             console.log("Submit server side", result);
 
-            router.push(`/posts/${result.id}`);
             router.refresh();
             // window.location.reload();
         } else {
             console.error("Failed to submit post");
         }
+        router.push(`/posts/${post.id}`);
     };
 
     return (
