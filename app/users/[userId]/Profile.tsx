@@ -18,7 +18,7 @@ export default function Profile({
           <h3 className="text-2xl font-bold">{user.name}</h3>
           <p className="font-light">{user.username}</p>
         </div>
-        <Avatar size="lg">
+        <Avatar size="xl">
           {user.image ? (
             <AvatarImage src={user.image} alt={`${user.username}`} />
           ) : null}
