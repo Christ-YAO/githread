@@ -24,6 +24,10 @@ type PostProps = {
 
 export default function Post({ post, userId }: PostProps) {
 
+  useEffect(() => {
+    setZoomedImage(null);
+  }, [post]);
+
   // State variable for managing zoomed image
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   // Function to open zoomed image
