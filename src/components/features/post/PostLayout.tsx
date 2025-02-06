@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type PostLayoutProps = PropsWithChildren<{
   user: PostHome["user"];
@@ -33,6 +33,7 @@ export default function PostLayout({
 }: PostLayoutProps) {
 
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <div className={clsx("flex w-full flex-row items-start p-4", className)}>
@@ -58,42 +59,44 @@ export default function PostLayout({
               ) : null}
             </Link>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant={"ghost"} className="rounded-3xl p-2">
-                  <MoreHorizontal size={20} strokeWidth={"1.5px"} />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className=" divide-y divide-muted">
-                {userId !== user.id && (
-                  <DropdownMenuItem className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
-                    report
-                    <OctagonAlert size={16} className="ml-2" />
-                  </DropdownMenuItem>
-                )}
-                {userId === user.id && (
-                  <>
-                    <Link href={`/posts/${postId}/edit`}>
-                    <DropdownMenuItem className="flex items-center justify-between cursor-pointer rounded-none font-normal">
-                      update
-                      <SquarePen size={16} className="ml-2" />
+            {!pathname?.includes("/write") && !pathname?.includes("/edit") && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant={"ghost"} className="rounded-3xl p-2">
+                    <MoreHorizontal size={20} strokeWidth={"1.5px"} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className=" divide-y divide-muted">
+                  {userId !== user.id && (
+                    <DropdownMenuItem className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
+                      report
+                      <OctagonAlert size={16} className="ml-2" />
                     </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem onClick={async () => {
-                      // if (confirm("Are you sure you want to delete this post?")) {
-                      await fetch(`/api/delete/${postId}`, {
-                        method: "DELETE",
-                      });
-                      router.refresh();
-                      // }
-                    }} className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
-                      delete
-                      <Trash2 size={16} className="ml-2" />
-                    </DropdownMenuItem>
-                  </>
-                )}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  )}
+                  {userId === user.id && (
+                    <>
+                      <Link href={`/posts/${postId}/edit`}>
+                        <DropdownMenuItem className="flex items-center justify-between cursor-pointer rounded-none font-normal">
+                          update
+                          <SquarePen size={16} className="ml-2" />
+                        </DropdownMenuItem>
+                      </Link>
+                      <DropdownMenuItem onClick={async () => {
+                        // if (confirm("Are you sure you want to delete this post?")) {
+                        await fetch(`/api/delete/${postId}`, {
+                          method: "DELETE",
+                        });
+                        router.refresh();
+                        // }
+                      }} className="text-red-600 flex items-center justify-between cursor-pointer rounded-none font-normal">
+                        delete
+                        <Trash2 size={16} className="ml-2" />
+                      </DropdownMenuItem>
+                    </>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
         </div>
         {children}
